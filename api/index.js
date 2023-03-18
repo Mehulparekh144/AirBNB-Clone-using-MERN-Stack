@@ -148,7 +148,7 @@ app.post("/api/upload-by-link", async (req, res) => {
 
 // Upload photo from device
 const photosMiddleware = multer({ storage: storage }).array("photos" , 100);
-app.post("/upload", photosMiddleware, (req, res) => {
+app.post("/api/upload", photosMiddleware, (req, res) => {
     const uploadedFiles = [];
     for (let index = 0; index < req.files.length; index++) {
         uploadedFiles.push(req.files[index].path);
