@@ -13,8 +13,8 @@ import SinglePage from './components/SinglePage'
 import Bookings from './components/Bookings'
 import SingleBooking from './components/SingleBooking'
 
-axios.defaults.baseURL = "http://127.0.0.1:4000"
-axios.defaults.withCredentials = true
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL ;
+axios.defaults.withCredentials = true;
 
 function App() {
 
