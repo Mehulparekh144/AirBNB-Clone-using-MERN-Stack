@@ -12,12 +12,18 @@ const BookingWidget = ({ place }) => {
     const [phone, setPhone] = useState("")
     const [redirect, setRedirect] = useState("")
     const user = useContext(UserContext)
+    const [logged, setLogged] = useState(true)
 
-    useEffect(()=>{
-        if(user){
-            setName(user.user.name);
+    useEffect(() => {
+        if (user) {
+            if (user.user) {
+                setName(user.user.name);
+            }
+            else {
+                setLogged(false)
+            }
         }
-    },[])
+    }, [])
 
     let numberOfNights = 0
     if (checkIn && checkOut) {
@@ -31,7 +37,7 @@ const BookingWidget = ({ place }) => {
         setRedirect(`/account/booking/${bookingId}`)
     }
 
-    if(redirect){
+    if (redirect) {
         return <Navigate to={redirect} />
     }
 
@@ -71,14 +77,29 @@ const BookingWidget = ({ place }) => {
                 )}
 
             </div>
-            <button className='primary mt-4' onClick={bookThisPlace}>Book this place
-                {numberOfNights > 0 && (
-                    <span>
-                        &nbsp;₹{numberOfNights * place.price}
-                    </span>
-                )}
-            </button>
+            {logged &&
+                <button className="primary mt-4" onClick={bookThisPlace}>Book this place
+                    {numberOfNights > 0 && (
+                        <span>
+                            &nbsp;₹{numberOfNights * place.price}
+                        </span>
+                    )}
+                </button>
+            }
+            {!logged &&
+                <button className="primary opacity-50 cursor-default mt-4" onClick={bookThisPlace}>Log in for booking
+                    {numberOfNights > 0 && (
+                        <span>
+                            &nbsp;₹{numberOfNights * place.price}
+                        </span>
+                    )}
+                </button>
+            }
         </div>
+
+
+
+
 
     )
 }
