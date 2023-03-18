@@ -10,7 +10,7 @@ const PlaceGallery = ({ place }) => {
                 <div className='p-8 grid gap-4 bg-black items-center justify-items-center '>
 
                     <div className='text-white '>
-                        <h2 className='text-2xl text-white'>Photos of {place.title}</h2>
+                        <h2 className='text-l mr-32 md:mr-0 md:text-center md:text-2xl text-white'>Photos of {place.title}</h2>
                         <button onClick={() => setShowAllPhotos(false)} className='fixed flex top-8 right-12 gap-2 py-2 px-4 mr-3 bg-primary rounded-full '><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
                         </svg>
